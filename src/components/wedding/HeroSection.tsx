@@ -117,12 +117,20 @@ export default function HeroSection({ language }: Props) {
           transition={{ delay: 0.55, duration: 1 }}
         >
           <h1 className="royal-name">
-            <span className="royal-initial">
-              {wedding.groom[language].charAt(0)}
-            </span>
-            <span className="royal-name-rest">
-              {wedding.groom[language].slice(1)}
-            </span>
+            {language === "en" ? (
+              <>
+                <span className="royal-initial">
+                  {wedding.groom.en.charAt(0)}
+                </span>
+                <span className="royal-name-rest">
+                  {wedding.groom.en.slice(1)}
+                </span>
+              </>
+            ) : (
+              <span className="royal-name-arabic">
+                {wedding.groom.ar}
+              </span>
+            )}
           </h1>
 
           <div className="royal-and">
@@ -132,12 +140,20 @@ export default function HeroSection({ language }: Props) {
           </div>
 
           <h1 className="royal-name">
-            <span className="royal-initial">
-              {wedding.bride[language].charAt(0)}
-            </span>
-            <span className="royal-name-rest">
-              {wedding.bride[language].slice(1)}
-            </span>
+            {language === "en" ? (
+              <>
+                <span className="royal-initial">
+                  {wedding.bride.en.charAt(0)}
+                </span>
+                <span className="royal-name-rest">
+                  {wedding.bride.en.slice(1)}
+                </span>
+              </>
+            ) : (
+              <span className="royal-name-arabic">
+                {wedding.bride.ar}
+              </span>
+            )}
           </h1>
         </motion.div>
 

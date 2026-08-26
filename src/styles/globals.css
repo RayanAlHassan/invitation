@@ -9385,3 +9385,156 @@ a {
   }
 
 }
+
+/* =========================================================
+   ARABIC HERO NAMES — CONNECTED WORDS
+========================================================= */
+
+.royal-name-arabic {
+  display: inline-block;
+
+  direction: rtl;
+  unicode-bidi: isolate;
+
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif !important;
+
+  font-size:
+    clamp(58px, 7vw, 88px);
+
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  letter-spacing: 0;
+  word-spacing: 0;
+
+  color: #9a631a;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e5bf68 0%,
+      #9a631a 45%,
+      #cf9e40 72%,
+      #74440f 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.arabic-mode .royal-name {
+  display: block !important;
+
+  width: 100%;
+
+  direction: rtl !important;
+
+  text-align: center !important;
+
+  line-height: 1.35 !important;
+}
+
+@media (max-width: 576px) {
+  .royal-name-arabic {
+    font-size:
+      clamp(48px, 14vw, 66px);
+
+    line-height: 1.4;
+  }
+}
+
+
+/* =========================================================
+   FIX ARABIC HERO SENTENCES
+   Keep Arabic letters connected
+========================================================= */
+
+.arabic-mode .royal-marriage-text,
+.arabic-mode .royal-quran small,
+.arabic-mode .royal-quran > span {
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif !important;
+
+  direction: rtl !important;
+  unicode-bidi: isolate !important;
+
+  letter-spacing: 0 !important;
+  word-spacing: 3px !important;
+
+  text-transform: none !important;
+
+  font-variant: normal !important;
+
+  line-height: 1.9 !important;
+
+  white-space: normal !important;
+}
+
+
+/* Main Arabic wedding sentence */
+.arabic-mode .royal-marriage-text {
+  display: block !important;
+
+  width: 100%;
+
+  margin-top: 12px !important;
+
+  color: #493228 !important;
+
+  font-size:
+    clamp(
+      18px,
+      2.2vw,
+      24px
+    ) !important;
+
+  font-weight: 500 !important;
+
+  text-align: center !important;
+}
+
+
+/* Arabic Quran heading/reference */
+.arabic-mode .royal-quran small {
+  font-size: 17px !important;
+
+  text-align: center !important;
+}
+
+
+.arabic-mode .royal-quran > span {
+  font-size: 14px !important;
+
+  text-align: center !important;
+}
+
+
+/* Prevent inherited English tracking */
+[dir="rtl"] .royal-marriage-text,
+[dir="rtl"] .royal-quran small,
+[dir="rtl"] .royal-quran > span {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+
+/* Mobile */
+@media (max-width: 576px) {
+
+  .arabic-mode .royal-marriage-text {
+    font-size: 18px !important;
+
+    line-height: 2 !important;
+  }
+
+}
