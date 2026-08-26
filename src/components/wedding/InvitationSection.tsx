@@ -69,7 +69,7 @@ export default function InvitationSection({
             <div className="family-name">
               {isArabic
                 ? "السيد أحمد الحسن وعائلته"
-                : "Mr. Ahmad Lhassan & Family"}
+                : "Mr. Ahmad AlHassan & Family"}
             </div>
           </div>
 
