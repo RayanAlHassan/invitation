@@ -89,8 +89,8 @@ export default function InvitationSection({
           >
             <h2>
               {isArabic
-                ? "صلاح أحمد حبلص"
-                : "Salah Ahmad Hoblos"}
+                ? "صلاح محمد حبلص"
+                : "Salah Mohamad Hoblos"}
             </h2>
 
             <div className="couple-divider">
