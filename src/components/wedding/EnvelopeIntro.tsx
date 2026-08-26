@@ -4,12 +4,20 @@ import { Language } from "@/data/wedding";
 interface Props {
   language: Language;
   onOpen: () => void;
+  onCelebrate?: () => void;
 }
 
 export default function EnvelopeIntro({
   language,
   onOpen,
+  onCelebrate,
 }: Props) {
+
+  const handleOpen = () => {
+    onCelebrate?.();
+    onOpen();
+  };
+
   return (
     <motion.section
       className="luxury-envelope-screen"
@@ -57,7 +65,7 @@ export default function EnvelopeIntro({
         <motion.button
           type="button"
           className="luxury-envelope-button"
-          onClick={onOpen}
+          onClick={handleOpen}
           whileHover={{
             y: -8,
             rotate: -0.4,
