@@ -94,8 +94,6 @@ export default function ScratchCard({
       ctx.font =
         '500 12px "Playfair Display", Georgia, serif';
 
-      ctx.letterSpacing = "2px";
-
       ctx.fillText(
         label.toUpperCase(),
         rect.width / 2,
@@ -104,11 +102,29 @@ export default function ScratchCard({
 
       ctx.font = "20px Georgia";
 
-      ctx.fillText(
-        "✦",
-        rect.width / 2,
-        rect.height / 2 + 27
-      );
+      const text = label.toUpperCase();
+      const spacing = 2;
+      
+      const widths = text
+        .split("")
+        .map((char) => ctx.measureText(char).width);
+      
+      const totalWidth =
+        widths.reduce((sum, width) => sum + width, 0) +
+        spacing * (text.length - 1);
+      
+      let currentX =
+        rect.width / 2 - totalWidth / 2;
+      
+      text.split("").forEach((char, index) => {
+        ctx.fillText(
+          char,
+          currentX + widths[index] / 2,
+          rect.height / 2 - 4
+        );
+      
+        currentX += widths[index] + spacing;
+      });
     };
 
     drawCover();
