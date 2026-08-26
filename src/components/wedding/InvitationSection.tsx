@@ -6,79 +6,123 @@ export default function InvitationSection({
 }: {
   language: Language;
 }) {
-  const items = [
-    {
-      icon: "♡",
-      en: ["LOVE", "that unites"],
-      ar: ["الحب", "الذي يجمعنا"],
-    },
-    {
-      icon: "♕",
-      en: ["FAITH", "that guides"],
-      ar: ["الإيمان", "الذي يرشدنا"],
-    },
-    {
-      icon: "❀",
-      en: ["FAMILY", "that supports"],
-      ar: ["العائلة", "التي تدعمنا"],
-    },
-    {
-      icon: "♜",
-      en: ["FUTURE", "that awaits"],
-      ar: ["المستقبل", "الذي ينتظرنا"],
-    },
-  ];
+  const isArabic = language === "ar";
 
   return (
-    <section className="royal-paper invitation-paper-section wedding-floral-section">
-      <div className="paper-flower paper-flower-left" />
-      <div className="paper-flower paper-flower-right" />
-
-      <div className="container text-center position-relative">
+    <section
+      className={`invitation-paper-section ${
+        isArabic ? "arabic-invitation" : ""
+      }`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          className="family-invitation"
+          initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 1 }}
         >
-          <span className="royal-eyebrow">
-            {language === "en" ? "YOU ARE" : "أنتم"}
-          </span>
+          {/* Bismillah */}
+          <motion.div
+            className="invitation-bismillah"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.1 }}
+          >
+            {isArabic
+              ? "بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ"
+              : "In the Name of Allah, the Most Gracious, the Most Merciful"}
+          </motion.div>
 
-          <h2 className="royal-section-title">
-            {language === "en"
-              ? "Cordially Invited"
-              : "مدعوون لمشاركتنا فرحتنا"}
-          </h2>
+          <div className="invitation-ornament">
+            <span />
+            <b>❦</b>
+            <span />
+          </div>
 
-          <p className="royal-section-copy">
-            {language === "en"
-              ? "to celebrate the most special day of our lives as we begin our journey together"
-              : "لتشاركونا أجمل أيام حياتنا ونحن نبدأ رحلتنا معاً"}
+          <p className="invitation-intro">
+            {isArabic
+              ? "بكل المحبة والسرور"
+              : "Together with their families"}
           </p>
 
-          <div className="paper-ornament">❦</div>
+          {isArabic && (
+            <p className="invitation-honor">
+              يتشرّف
+            </p>
+          )}
+
+          {/* Families */}
+          <div className="invitation-families">
+            <div className="family-name">
+              {isArabic
+                ? "السيد محمد حبلص وعائلته"
+                : "Mr. Mohamad Hoblos & Family"}
+            </div>
+
+            <div className="family-and">
+              {isArabic ? "و" : "and"}
+            </div>
+
+            <div className="family-name">
+              {isArabic
+                ? "السيد أحمد الحسن وعائلته"
+                : "Mr. Ahmad Lhassan & Family"}
+            </div>
+          </div>
+
+          <p className="invitation-request">
+            {isArabic
+              ? "بدعوتكم لمشاركتهم فرحتهم والاحتفال بزفاف ولديهما"
+              : "request the honor of your presence as they joyfully celebrate the marriage of their beloved children"}
+          </p>
+
+          {/* Full names */}
+          <motion.div
+            className="invitation-couple"
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            <h2>
+              {isArabic
+                ? "صلاح أحمد حبلص"
+                : "Salah Ahmad Hoblos"}
+            </h2>
+
+            <div className="couple-divider">
+              <span />
+              <b>{isArabic ? "و" : "&"}</b>
+              <span />
+            </div>
+
+            <h2>
+              {isArabic
+                ? "ريان أحمد الحسن"
+                : "Rayan Ahmad Lhassan"}
+            </h2>
+          </motion.div>
+
+          {/* Islamic wedding dua */}
+          <div className="wedding-dua">
+            <div className="dua-symbol">❦</div>
+
+            <p>
+              {isArabic
+                ? "بارك الله لكما، وبارك عليكما، وجمع بينكما في خير"
+                : "May Allah bless you both, shower His blessings upon you, and bring you together in goodness."}
+            </p>
+          </div>
+
+          <p className="invitation-presence">
+            {isArabic
+              ? "حضوركم يشرّفنا ويزيد فرحتنا بهجةً وسروراً"
+              : "Your presence would be an honor and a cherished part of our celebration."}
+          </p>
         </motion.div>
-
-        <div className="royal-values">
-          {items.map((item, index) => {
-            const text = language === "en" ? item.en : item.ar;
-
-            return (
-              <motion.div
-                key={index}
-                className="royal-value"
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="royal-value-icon">{item.icon}</div>
-                <strong>{text[0]}</strong>
-                <small>{text[1]}</small>
-              </motion.div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

@@ -8833,3 +8833,555 @@ a {
   }
 
 }
+
+/* =========================================================
+   FORMAL FAMILY WEDDING INVITATION
+========================================================= */
+
+.invitation-paper-section {
+  position: relative;
+
+  padding: 85px 20px 90px !important;
+
+  background:
+    linear-gradient(
+      rgba(255, 249, 235, .12),
+      rgba(255, 247, 230, .12)
+    ),
+    url("/images/wedding/parchment.webp")
+    center / cover no-repeat !important;
+
+  overflow: hidden;
+}
+
+
+/* No side flowers in this section */
+.invitation-paper-section::before,
+.invitation-paper-section::after {
+  display: none !important;
+  content: none !important;
+}
+
+
+.family-invitation {
+  position: relative;
+
+  width: min(760px, 100%);
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  color: #493426;
+}
+
+
+/* =========================================================
+   BISMILLAH
+========================================================= */
+
+.invitation-bismillah {
+  margin-bottom: 18px;
+
+  color: #75501e;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: clamp(18px, 2vw, 24px);
+
+  font-weight: 500;
+
+  letter-spacing: .3px;
+}
+
+
+.arabic-invitation .invitation-bismillah {
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif;
+
+  font-size: clamp(25px, 3vw, 34px);
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   GOLD ORNAMENT
+========================================================= */
+
+.invitation-ornament {
+  width: min(280px, 70%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin: 0 auto 25px;
+
+  color: #a47529;
+}
+
+
+.invitation-ornament span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #aa782a,
+      transparent
+    );
+}
+
+
+.invitation-ornament b {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.invitation-intro {
+  margin: 0 0 4px;
+
+  color: #765735;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  letter-spacing: 1px;
+}
+
+
+.invitation-honor {
+  margin: 0 0 17px;
+
+  color: #6c4c2e;
+
+  font-family:
+    "Noto Naskh Arabic",
+    serif;
+
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   FAMILY NAMES
+========================================================= */
+
+.invitation-families {
+  margin: 18px auto 25px;
+}
+
+
+.family-name {
+  color: #4d3423;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: clamp(23px, 3vw, 31px);
+
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+
+.family-and {
+  margin: 5px 0;
+
+  color: #aa7627;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 22px;
+
+  font-style: italic;
+}
+
+
+.arabic-invitation .family-name {
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif;
+
+  font-size: clamp(24px, 3vw, 32px);
+
+  line-height: 1.8;
+}
+
+
+.arabic-invitation .family-and {
+  font-family:
+    "Noto Naskh Arabic",
+    serif;
+
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   INVITATION REQUEST
+========================================================= */
+
+.invitation-request {
+  max-width: 620px;
+
+  margin: 26px auto 32px;
+
+  color: #674b35;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: clamp(17px, 2vw, 21px);
+
+  line-height: 1.7;
+}
+
+
+.arabic-invitation .invitation-request {
+  max-width: 660px;
+
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif;
+
+  font-size: clamp(20px, 2.4vw, 25px);
+
+  line-height: 2;
+}
+
+
+/* =========================================================
+   SALAH + RAYAN FULL NAMES
+========================================================= */
+
+.invitation-couple {
+  margin: 20px auto 32px;
+}
+
+
+.invitation-couple h2 {
+  margin: 0;
+
+  color: #8c5b17;
+
+  font-family:
+    "Bodoni Moda",
+    "Cormorant Garamond",
+    serif;
+
+  font-size: clamp(38px, 5vw, 58px);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c99b42,
+      #815015 55%,
+      #bd8730
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.arabic-invitation .invitation-couple h2 {
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif;
+
+  font-size: clamp(38px, 5vw, 57px);
+
+  line-height: 1.5;
+}
+
+
+.couple-divider {
+  width: min(300px, 65%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin: 7px auto;
+}
+
+
+.couple-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #aa7728,
+      transparent
+    );
+}
+
+
+.couple-divider b {
+  color: #a16c20;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 30px;
+
+  font-weight: 400;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   ISLAMIC WEDDING DUA
+========================================================= */
+
+.wedding-dua {
+  max-width: 630px;
+
+  margin: 35px auto 0;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(157, 108, 38, .25);
+}
+
+
+.dua-symbol {
+  margin-bottom: 10px;
+
+  color: #a8782c;
+
+  font-size: 21px;
+}
+
+
+.wedding-dua p {
+  margin: 0;
+
+  color: #503829;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: clamp(18px, 2vw, 22px);
+
+  font-style: italic;
+
+  line-height: 1.7;
+}
+
+
+.arabic-invitation .wedding-dua p {
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif;
+
+  font-size: clamp(21px, 2.5vw, 27px);
+
+  font-style: normal;
+
+  line-height: 2;
+}
+
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.invitation-presence {
+  margin: 26px auto 0;
+
+  color: #84633f;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 16px;
+
+  font-style: italic;
+}
+
+
+.arabic-invitation .invitation-presence {
+  font-family:
+    "Noto Naskh Arabic",
+    serif;
+
+  font-size: 19px;
+
+  font-style: normal;
+
+  line-height: 1.9;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+  .invitation-paper-section {
+    padding:
+      58px 18px 65px !important;
+  }
+
+  .invitation-families {
+    margin:
+      15px auto 22px;
+  }
+
+  .invitation-request {
+    margin:
+      22px auto 26px;
+  }
+
+  .invitation-couple h2 {
+    font-size: 37px;
+  }
+
+  .arabic-invitation .invitation-couple h2 {
+    font-size: 38px;
+
+    line-height: 1.55;
+  }
+
+  .wedding-dua {
+    margin-top: 28px;
+
+    padding-top: 22px;
+  }
+
+}
+
+/* =========================================================
+   ARABIC NAMES — NO OVERSIZED FIRST LETTER
+========================================================= */
+
+.arabic-mode .royal-name {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: baseline !important;
+
+  direction: rtl !important;
+
+  line-height: 1.35 !important;
+}
+
+
+/* First Arabic letter = SAME size as remaining letters */
+.arabic-mode .royal-initial,
+.arabic-mode .royal-name-rest {
+  display: inline !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif !important;
+
+  font-size:
+    clamp(
+      58px,
+      7vw,
+      88px
+    ) !important;
+
+  font-weight: 500 !important;
+
+  line-height: 1.35 !important;
+
+  letter-spacing: 0 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e5bf68 0%,
+      #9a631a 45%,
+      #cf9e40 72%,
+      #74440f 100%
+    ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  -webkit-text-fill-color: transparent !important;
+
+  filter: none !important;
+}
+
+
+/* No artificial gap between Arabic letters */
+.arabic-mode .royal-initial {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+
+/* Mobile */
+@media (max-width: 576px) {
+
+  .arabic-mode .royal-initial,
+  .arabic-mode .royal-name-rest {
+    font-size:
+      clamp(
+        48px,
+        14vw,
+        66px
+      ) !important;
+
+    line-height: 1.45 !important;
+  }
+
+}
