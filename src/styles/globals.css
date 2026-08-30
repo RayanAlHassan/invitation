@@ -10500,3 +10500,127 @@ a {
   }
 
 }
+
+/* Guest note - bride/groom family contacts */
+
+.guest-family-contacts {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.guest-family-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 25px 16px;
+  border: 1px solid rgba(151, 112, 65, .35);
+  background: rgba(255, 250, 235, .35);
+}
+
+.guest-family-label {
+  color: #785a3d;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.guest-note-arabic .guest-family-label {
+  font-family: "Noto Naskh Arabic", "Amiri", serif;
+  font-size: 21px;
+  letter-spacing: 0;
+}
+
+.guest-family-contact .guest-phone-number {
+  margin: 2px 0;
+}
+
+.guest-family-contact .guest-contact-buttons {
+  width: 100%;
+  gap: 8px;
+}
+
+.guest-family-contact .guest-contact-button {
+  min-width: 0;
+  flex: 1;
+  padding: 10px 10px;
+}
+
+@media (max-width: 650px) {
+  .guest-family-contacts {
+    grid-template-columns: 1fr;
+  }
+
+  .guest-family-contact {
+    padding: 22px 14px;
+  }
+}
+
+/* Guest note - bride/groom family contacts */
+
+.guest-family-contacts {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.guest-family-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 25px 16px;
+  border: 1px solid rgba(151, 112, 65, .35);
+  background: rgba(255, 250, 235, .35);
+}
+
+.guest-family-label {
+  color: #785a3d;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.guest-note-arabic .guest-family-label {
+  font-family: "Noto Naskh Arabic", "Amiri", serif;
+  font-size: 21px;
+  letter-spacing: 0;
+}
+
+.guest-family-contact .guest-phone-number {
+  margin: 2px 0;
+}
+
+.guest-family-contact .guest-contact-buttons {
+  width: 100%;
+  gap: 8px;
+}
+
+.guest-family-contact .guest-contact-button {
+  min-width: 0;
+  flex: 1;
+  padding: 10px 10px;
+}
+
+@media (max-width: 650px) {
+  .guest-family-contacts {
+    grid-template-columns: 1fr;
+  }
+
+  .guest-family-contact {
+    padding: 22px 14px;
+  }
+}

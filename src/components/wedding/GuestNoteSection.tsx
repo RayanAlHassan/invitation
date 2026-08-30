@@ -8,28 +8,24 @@ export default function GuestNoteSection({
 }) {
   const isArabic = language === "ar";
 
-  /*
-   * IMPORTANT:
-   * Replace this with the real phone number.
-   *
-   * Example:
-   * const phoneNumber = "+96170123456";
-   *
-   * Do not add spaces for WhatsApp.
-   */
-  const phoneNumber = "+961XXXXXXXX";
-
-  const whatsappNumber =
-    phoneNumber.replace(/\D/g, "");
+  const contacts = [
+    {
+      labelAr: "أهل العروس",
+      labelEn: "Bride's Family",
+      displayNumber: "76 303 610",
+      phoneNumber: "+96176303610",
+    },
+    {
+      labelAr: "أهل العريس",
+      labelEn: "Groom's Family",
+      displayNumber: "70 066 678",
+      phoneNumber: "+96170066678",
+    },
+  ];
 
   const whatsappMessage = isArabic
     ? "مرحباً، نود إبلاغكم بخصوص حضور حفل زفاف صلاح وريان."
     : "Hello, we would like to let you know regarding our attendance at Salah & Rayan's wedding.";
-
-  const whatsappUrl =
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
 
   return (
     <section
@@ -41,22 +37,10 @@ export default function GuestNoteSection({
       <div className="container">
         <motion.div
           className="guest-note-card"
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.25,
-          }}
-          transition={{
-            duration: 0.8,
-            ease: "easeOut",
-          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="guest-note-top-ornament">
             ❦
@@ -82,8 +66,8 @@ export default function GuestNoteSection({
 
           <p className="guest-note-secondary">
             {isArabic
-              ? "في حال تعذّر حضوركم، نرجو منكم التكرّم بإبلاغنا مسبقًا عبر الاتصال أو الواتساب على الرقم أدناه، مما يساعدنا على تأكيد العدد النهائي للضيوف."
-              : "If you are unable to attend, we kindly ask that you let us know in advance by calling or messaging the number below. This will help us confirm the final guest count."}
+              ? "في حال تعذّر حضوركم، نرجو منكم التكرّم بإبلاغنا مسبقًا عبر الاتصال أو الواتساب، مما يساعدنا على تأكيد العدد النهائي للضيوف."
+              : "If you are unable to attend, we kindly ask that you let us know in advance by phone or WhatsApp. This will help us confirm the final guest count."}
           </p>
 
           <div className="guest-note-small-ornament">
@@ -92,58 +76,69 @@ export default function GuestNoteSection({
 
           <p className="guest-note-closing">
             {isArabic
-              ? "نقدّر تعاونكم وتفهّمكم، ونسعد بمشاركتكم فرحتنا."
-              : "We truly appreciate your kindness and understanding, and look forward to celebrating with you."}
+              ? "يرجى التواصل مع أهل العروس أو أهل العريس بحسب جهة الدعوة. نقدّر تعاونكم وتفهّمكم، ونسعد بمشاركتكم فرحتنا."
+              : "Please contact the bride's or groom's family according to the side from which you received your invitation. We truly appreciate your kindness and understanding."}
           </p>
 
-          <div className="guest-contact">
-            <a
-              href={`tel:${phoneNumber}`}
-              className="guest-phone-number"
-              aria-label={
-                isArabic
-                  ? "الاتصال بنا"
-                  : "Call us"
-              }
-            >
-              <i className="bi bi-telephone-fill" />
+          <div className="guest-family-contacts">
+            {contacts.map((contact) => {
+              const whatsappUrl =
+                `https://wa.me/${contact.phoneNumber.replace(
+                  /\D/g,
+                  ""
+                )}?text=${encodeURIComponent(
+                  whatsappMessage
+                )}`;
 
-              <span>{phoneNumber}</span>
-            </a>
+              return (
+                <div
+                  className="guest-family-contact"
+                  key={contact.phoneNumber}
+                >
+                  <span className="guest-family-label">
+                    {isArabic
+                      ? contact.labelAr
+                      : contact.labelEn}
+                  </span>
 
-            <div className="guest-contact-buttons">
-              <a
-                href={`tel:${phoneNumber}`}
-                className="guest-contact-button"
-              >
-                <i className="bi bi-telephone" />
+                  <a
+                    href={`tel:${contact.phoneNumber}`}
+                    className="guest-phone-number"
+                  >
+                    <i className="bi bi-telephone-fill" />
+                    <span>{contact.displayNumber}</span>
+                  </a>
 
-                <span>
-                  {isArabic
-                    ? "اتصل بنا"
-                    : "CALL"}
-                </span>
-              </a>
+                  <div className="guest-contact-buttons">
+                    <a
+                      href={`tel:${contact.phoneNumber}`}
+                      className="guest-contact-button"
+                    >
+                      <i className="bi bi-telephone" />
+                      <span>
+                        {isArabic ? "اتصال" : "CALL"}
+                      </span>
+                    </a>
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="guest-contact-button"
-              >
-                <i className="bi bi-whatsapp" />
-
-                <span>
-                  {isArabic
-                    ? "واتساب"
-                    : "WHATSAPP"}
-                </span>
-              </a>
-            </div>
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="guest-contact-button"
+                    >
+                      <i className="bi bi-whatsapp" />
+                      <span>
+                        {isArabic ? "واتساب" : "WHATSAPP"}
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="guest-note-bottom">
-            <span>♡</span>
+            ♡
           </div>
         </motion.div>
       </div>
