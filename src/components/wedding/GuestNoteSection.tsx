@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
+import { useMemo, useState } from "react";
 import { Language } from "@/data/wedding";
+
+type FamilySide = "bride" | "groom";
 
 export default function GuestNoteSection({
   language,
@@ -7,25 +10,41 @@ export default function GuestNoteSection({
   language: Language;
 }) {
   const isArabic = language === "ar";
+  const [activeSide, setActiveSide] =
+    useState<FamilySide>("bride");
 
-  const contacts = [
-    {
-      labelAr: "أهل العروس",
-      labelEn: "Bride's Family",
-      displayNumber: "76 303 610",
-      phoneNumber: "+96176303610",
-    },
-    {
-      labelAr: "أهل العريس",
-      labelEn: "Groom's Family",
-      displayNumber: "70 066 678",
-      phoneNumber: "+96170066678",
-    },
-  ];
+  const contacts = useMemo(
+    () => ({
+      bride: {
+        labelAr: "أهل العروس",
+        labelEn: "Bride's Family",
+        displayNumber: "76 303 610",
+        phoneNumber: "+96176303610",
+      },
+      groom: {
+        labelAr: "أهل العريس",
+        labelEn: "Groom's Family",
+        displayNumber: "70 066 678",
+        phoneNumber: "+96170066678",
+      },
+    }),
+    []
+  );
+
+  const activeContact =
+    contacts[activeSide];
 
   const whatsappMessage = isArabic
     ? "مرحباً، نود إبلاغكم بخصوص حضور حفل زفاف صلاح وريان."
     : "Hello, we would like to let you know regarding our attendance at Salah & Rayan's wedding.";
+
+  const whatsappUrl =
+    `https://wa.me/${activeContact.phoneNumber.replace(
+      /\D/g,
+      ""
+    )}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
 
   return (
     <section
@@ -76,66 +95,95 @@ export default function GuestNoteSection({
 
           <p className="guest-note-closing">
             {isArabic
-              ? "يرجى التواصل مع أهل العروس أو أهل العريس بحسب جهة الدعوة. نقدّر تعاونكم وتفهّمكم، ونسعد بمشاركتكم فرحتنا."
-              : "Please contact the bride's or groom's family according to the side from which you received your invitation. We truly appreciate your kindness and understanding."}
+              ? "يرجى التواصل مع أهل العروس أو أهل العريس بحسب جهة الدعوة."
+              : "Please contact the bride's or groom's family according to the side from which you received your invitation."}
           </p>
 
-          <div className="guest-family-contacts">
-            {contacts.map((contact) => {
-              const whatsappUrl =
-                `https://wa.me/${contact.phoneNumber.replace(
-                  /\D/g,
-                  ""
-                )}?text=${encodeURIComponent(
-                  whatsappMessage
-                )}`;
+          <div className="family-switcher">
+            <button
+              type="button"
+              className={`family-switch-button ${
+                activeSide === "bride"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() =>
+                setActiveSide("bride")
+              }
+            >
+              {isArabic
+                ? "أهل العروس"
+                : "Bride's Family"}
+            </button>
 
-              return (
-                <div
-                  className="guest-family-contact"
-                  key={contact.phoneNumber}
-                >
-                  <span className="guest-family-label">
-                    {isArabic
-                      ? contact.labelAr
-                      : contact.labelEn}
-                  </span>
-
-                  <a
-                    href={`tel:${contact.phoneNumber}`}
-                    className="guest-phone-number"
-                  >
-                    <i className="bi bi-telephone-fill" />
-                    <span>{contact.displayNumber}</span>
-                  </a>
-
-                  <div className="guest-contact-buttons">
-                    <a
-                      href={`tel:${contact.phoneNumber}`}
-                      className="guest-contact-button"
-                    >
-                      <i className="bi bi-telephone" />
-                      <span>
-                        {isArabic ? "اتصال" : "CALL"}
-                      </span>
-                    </a>
-
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="guest-contact-button"
-                    >
-                      <i className="bi bi-whatsapp" />
-                      <span>
-                        {isArabic ? "واتساب" : "WHATSAPP"}
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
+            <button
+              type="button"
+              className={`family-switch-button ${
+                activeSide === "groom"
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() =>
+                setActiveSide("groom")
+              }
+            >
+              {isArabic
+                ? "أهل العريس"
+                : "Groom's Family"}
+            </button>
           </div>
+
+          <motion.div
+            key={activeSide}
+            className="single-family-contact"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <span className="guest-family-label">
+              {isArabic
+                ? activeContact.labelAr
+                : activeContact.labelEn}
+            </span>
+
+            <a
+              href={`tel:${activeContact.phoneNumber}`}
+              className="guest-phone-number"
+            >
+              <i className="bi bi-telephone-fill" />
+              <span>
+                {activeContact.displayNumber}
+              </span>
+            </a>
+
+            <div className="guest-contact-buttons">
+              <a
+                href={`tel:${activeContact.phoneNumber}`}
+                className="guest-contact-button"
+              >
+                <i className="bi bi-telephone" />
+                <span>
+                  {isArabic
+                    ? "اتصال"
+                    : "CALL"}
+                </span>
+              </a>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="guest-contact-button"
+              >
+                <i className="bi bi-whatsapp" />
+                <span>
+                  {isArabic
+                    ? "واتساب"
+                    : "WHATSAPP"}
+                </span>
+              </a>
+            </div>
+          </motion.div>
 
           <div className="guest-note-bottom">
             ♡
