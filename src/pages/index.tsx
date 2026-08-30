@@ -10,7 +10,7 @@ import InvitationSection from "@/components/wedding/InvitationSection";
 import ScratchDateSection from "@/components/wedding/ScratchDateSection";
 import CountdownSection from "@/components/wedding/CountdownSection";
 import ScheduleSection from "@/components/wedding/ScheduleSection";
-import GallerySection from "@/components/wedding/GallerySection";
+import GuestNoteSection from "@/components/wedding/GuestNoteSection";
 import VenueSection from "@/components/wedding/VenueSection";
 import CelebrationPlanSection from "@/components/wedding/CelebrationPlanSection";
 import ClosingSection from "@/components/wedding/ClosingSection";
@@ -22,7 +22,7 @@ import {
 
 export default function Home() {
   const [language, setLanguage] =
-    useState<Language>("en");
+    useState<Language>("ar");
 
   const [opened, setOpened] =
     useState(false);
@@ -100,7 +100,7 @@ export default function Home() {
         loop
       >
         <source
-          src="/music/wedding.mp3"
+          src="/music/wedding-melody.mp3"
           type="audio/mpeg"
         />
       </audio>
@@ -188,7 +188,7 @@ export default function Home() {
           language={language}
         />
 
-        <GallerySection
+        <GuestNoteSection
           language={language}
         />
 
@@ -205,9 +205,30 @@ export default function Home() {
         {!opened && (
           <EnvelopeIntro
             language={language}
-            onCelebrate={
-              startCelebration
-            }
+            onCelebrate={() => {
+              const audio =
+                document.getElementById(
+                  "wedding-music"
+                ) as HTMLAudioElement | null;
+
+              if (audio) {
+                audio.volume = 0.35;
+
+                audio
+                  .play()
+                  .then(() => {
+                    setMusicPlaying(true);
+                  })
+                  .catch((error) => {
+                    console.error(
+                      "Wedding music could not start:",
+                      error
+                    );
+                  });
+              }
+
+              startCelebration();
+            }}
             onOpen={() =>
               setOpened(true)
             }

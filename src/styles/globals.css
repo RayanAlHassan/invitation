@@ -9971,3 +9971,532 @@ a {
 .scratch-canvas:active {
   cursor: grabbing;
 }
+
+/* =========================================================
+   WEDDING MUSIC
+========================================================= */
+
+.wedding-music-button {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(139, 101, 55, .55);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #fff9e9,
+      #e8d3a9 58%,
+      #b89056
+    );
+
+  color: #72502d;
+
+  box-shadow:
+    0 5px 20px rgba(75, 48, 26, .18),
+    inset 0 0 0 3px rgba(255, 250, 232, .45);
+
+  cursor: pointer;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.wedding-music-button:hover {
+  transform:
+    translateY(-3px)
+    scale(1.05);
+
+  box-shadow:
+    0 8px 25px rgba(75, 48, 26, .24),
+    inset 0 0 0 3px rgba(255, 250, 232, .5);
+}
+
+.music-icon {
+  position: relative;
+  z-index: 2;
+
+  font-family: Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.music-playing .music-icon {
+  animation:
+    musicFloat 2s ease-in-out infinite;
+}
+
+.music-waves {
+  position: absolute;
+  right: -3px;
+  bottom: 5px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+
+  height: 14px;
+}
+
+.music-waves i {
+  display: block;
+
+  width: 2px;
+  height: 6px;
+
+  border-radius: 10px;
+
+  background: #8d6538;
+
+  animation:
+    musicWave .8s ease-in-out infinite alternate;
+}
+
+.music-waves i:nth-child(2) {
+  animation-delay: .18s;
+}
+
+.music-waves i:nth-child(3) {
+  animation-delay: .36s;
+}
+
+@keyframes musicWave {
+  from {
+    height: 4px;
+  }
+
+  to {
+    height: 13px;
+  }
+}
+
+@keyframes musicFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 576px) {
+  .wedding-music-button {
+    right: 15px;
+    bottom: 15px;
+
+    width: 46px;
+    height: 46px;
+  }
+
+  .music-icon {
+    font-size: 21px;
+  }
+}
+
+/* =========================================================
+   GUEST NOTE SECTION
+========================================================= */
+
+.guest-note-section {
+  position: relative;
+
+  padding:
+    clamp(75px, 9vw, 125px)
+    18px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(250, 242, 220, .74),
+      rgba(250, 242, 220, .74)
+    ),
+    url("/images/wedding/parchment.webp")
+    center / cover no-repeat !important;
+}
+
+.guest-note-card {
+  position: relative;
+
+  width: min(100%, 760px);
+
+  margin: 0 auto;
+
+  padding:
+    clamp(42px, 6vw, 70px)
+    clamp(22px, 6vw, 72px);
+
+  text-align: center;
+
+  color: #503a2c;
+
+  border:
+    1px solid rgba(151, 112, 65, .5);
+
+  background:
+    rgba(255, 250, 235, .48);
+
+  box-shadow:
+    inset 0 0 0 5px rgba(255, 250, 235, .25);
+}
+
+
+/* inner vintage frame */
+
+.guest-note-card::before {
+  position: absolute;
+
+  inset: 8px;
+
+  content: "";
+
+  pointer-events: none;
+
+  border:
+    1px solid rgba(168, 129, 78, .2);
+}
+
+
+.guest-note-top-ornament {
+  margin-bottom: 15px;
+
+  color: #987348;
+
+  font-family: Georgia, serif;
+
+  font-size: 31px;
+}
+
+
+.guest-note-section .royal-eyebrow {
+  display: block;
+
+  color: #785a3d;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(15px, 2vw, 19px);
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+}
+
+
+.guest-note-divider {
+  display: flex;
+
+  width:
+    min(300px, 80%);
+
+  margin:
+    23px auto
+    30px;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 13px;
+
+  color: #a37a48;
+}
+
+
+.guest-note-divider span {
+  width: 100%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(151, 111, 65, .6),
+      transparent
+    );
+}
+
+
+.guest-note-divider i {
+  flex: 0 0 auto;
+
+  font-style: normal;
+
+  font-size: 10px;
+}
+
+
+.guest-note-main,
+.guest-note-secondary,
+.guest-note-closing {
+  max-width: 610px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  color: #584235;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(18px, 2.2vw, 22px);
+
+  line-height: 1.8;
+}
+
+
+.guest-note-main {
+  margin-bottom: 17px;
+
+  font-weight: 600;
+}
+
+
+.guest-note-secondary {
+  margin-bottom: 20px;
+}
+
+
+.guest-note-small-ornament {
+  margin: 8px auto 17px;
+
+  color: #a17a4d;
+
+  font-size: 21px;
+}
+
+
+.guest-note-closing {
+  margin-bottom: 30px;
+
+  font-style: italic;
+}
+
+
+/* Arabic */
+
+.guest-note-arabic .royal-eyebrow,
+.guest-note-arabic .guest-note-main,
+.guest-note-arabic .guest-note-secondary,
+.guest-note-arabic .guest-note-closing,
+.guest-note-arabic .guest-contact-button {
+  font-family:
+    "Noto Naskh Arabic",
+    "Amiri",
+    serif !important;
+
+  letter-spacing: 0 !important;
+}
+
+
+.guest-note-arabic .royal-eyebrow {
+  font-size:
+    clamp(20px, 2.6vw, 26px);
+
+  line-height: 1.8;
+}
+
+
+.guest-note-arabic .guest-note-main,
+.guest-note-arabic .guest-note-secondary,
+.guest-note-arabic .guest-note-closing {
+  font-size:
+    clamp(19px, 2.4vw, 23px);
+
+  line-height: 2;
+}
+
+
+.guest-note-arabic .guest-note-closing {
+  font-style: normal;
+}
+
+
+/* Contact */
+
+.guest-contact {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.guest-phone-number {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #725231;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(19px, 2.4vw, 24px);
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  direction: ltr;
+}
+
+
+.guest-phone-number:hover {
+  color: #9a7144;
+}
+
+
+.guest-contact-buttons {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+}
+
+
+.guest-contact-button {
+  min-width: 145px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding:
+    11px 20px;
+
+  border:
+    1px solid rgba(133, 94, 51, .65);
+
+  color: #68492c;
+
+  background:
+    rgba(255, 249, 231, .5);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  text-decoration: none;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+
+.guest-contact-button:hover {
+  color: #fffaf0;
+
+  background: #8b653d;
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(83, 56, 31, .14);
+}
+
+
+.guest-note-bottom {
+  margin-top: 28px;
+
+  color: #a67c4d;
+
+  font-family: Georgia, serif;
+
+  font-size: 20px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+  .guest-note-section {
+    padding:
+      60px 14px;
+  }
+
+
+  .guest-note-card {
+    padding:
+      38px 19px;
+  }
+
+
+  .guest-contact-buttons {
+    width: 100%;
+  }
+
+
+  .guest-contact-button {
+    min-width: 0;
+
+    flex: 1;
+
+    padding:
+      11px 12px;
+  }
+
+
+  .guest-note-divider {
+    margin:
+      18px auto
+      24px;
+  }
+
+}
